@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodo="addTodo"></TodoInput>
-    <TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodo"></TodoList>
-    <TodoFooter v-on:removeAll="clearAll"></TodoFooter>
+    <TodoHeader>애플리케이션 이름</TodoHeader>
+    <TodoInput v-on:addTodo="addTodo">할 일 입력, 수정</TodoInput>
+    <TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodo">할 일 목록 표시 및 특정 할 일 삭제</TodoList>
+    <TodoFooter v-on:removeAll="clearAll">할 일 모두 삭제</TodoFooter>
   </div>
 </template>
 
@@ -25,6 +25,7 @@ export default {
       this.todoItems = [];
     },
 		addTodo(todoItem) {
+      // 로컬 스토리지에 데이터를 추가하는 로직
 			localStorage.setItem(todoItem, todoItem);
 			this.todoItems.push(todoItem);
 		},
